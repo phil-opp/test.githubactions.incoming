@@ -1,12 +1,12 @@
 name: Handles incoming repository_dispatch events
-on: [repository_dispatch, push]
+on: repository_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Print event
-      run: echo "Received event ${{ github.event }}..."
+      run: echo "Received event ${{ toJson(github.event) }}..."
 
     - name: Build event
       if: github.event.action == 'build'
