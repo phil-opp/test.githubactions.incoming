@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - name: Print event
+      run: echo "Received event ${{ github.event }}..."
+
     - name: Build event
       if: github.event.action == 'build'
       run: |
